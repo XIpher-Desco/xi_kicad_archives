@@ -1,0 +1,88 @@
+
+(rules PCB xi_cont
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 4)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.0)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 50.0 (type smd-smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    GND VCC Analog0 Analog2 Analog6 Analog7 Analog8 Analog9
+    Analog10 "unconnected-(U1-Pad1)" "unconnected-(U1-Pad2)" SDA SCL Button3 Button4 Button2
+    Button1 Button0 Analog1 Analog3 RST "unconnected-(U1-Pad24)" "unconnected-(U2-Pad11)" "unconnected-(U2-Pad14)"
+    "Net-(JP3-Pad2)" "Net-(JP2-Pad2)" "Net-(JP1-Pad2)" "unconnected-(U2-Pad19)" "unconnected-(U2-Pad20)" "unconnected-(SW1-Pad4)" "unconnected-(SW1-Pad5)" "/0_GPB0"
+    "/0_GPB1" "/0_GPB2" "/0_GPB3" "/0_GPB4" "/0_GPB5" "/0_GPB6" "/0_GPB7" "/0_GPA0"
+    "/0_GPA1" "/0_GPA2" "/0_GPA3" "/0_GPA7" "/0_GPA4" "/0_GPA5" "/0_GPA6" "/1_GPB0"
+    "/1_GPB1" "/1_GPB2" "/1_GPB3" "/1_GPB4" "/1_GPB5" "/1_GPB6" "/1_GPB7" "/1_GPA0"
+    "/1_GPA1" "/1_GPA2" "/1_GPA3" "/1_GPA4" "/1_GPA5" "/1_GPA6" "/1_GPA7" "Net-(JP4-Pad2)"
+    "Net-(JP5-Pad2)" "Net-(JP6-Pad2)" "unconnected-(SW2-Pad4)" "unconnected-(SW2-Pad5)" "unconnected-(U3-Pad11)" "unconnected-(U3-Pad14)" "unconnected-(U3-Pad19)" "unconnected-(U3-Pad20)"
+    "/2_GPB0" "/2_GPB1" "/2_GPB2" "/2_GPB3" "/2_GPB4" "/2_GPB5" "/2_GPB6" "/2_GPB7"
+    "/2_GPA0" "/2_GPA1" "/2_GPA2" "/2_GPA3" "/2_GPA4" "/2_GPA5" "/2_GPA6" "/2_GPA7"
+    "Net-(JP7-Pad2)" "Net-(JP8-Pad2)" "Net-(JP9-Pad2)" "unconnected-(SW3-Pad4)" "unconnected-(SW3-Pad5)" "unconnected-(U4-Pad11)" "unconnected-(U4-Pad14)" "unconnected-(U4-Pad19)"
+    "unconnected-(U4-Pad20)"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
